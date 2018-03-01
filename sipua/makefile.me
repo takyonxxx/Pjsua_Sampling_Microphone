@@ -1,0 +1,30 @@
+export PKG_CONFIG_PATH=/home/bonder/lagoon/local/lib/pkgconfig
+
+CC        = gcc
+CFLAGS    = -Wall -g -O0 `pkg-config --cflags libpjproject`
+CPPFLAGS  =
+LD_FLAGS  = `pkg-config pkg-config --libs-only-L libpjproject`
+LD_LIBS   = `pkg-config --libs-only-l libpjproject`
+
+EXCLUDE   = 
+SOURCES   = $(filter-out $(EXCLUDE),$(wildcard *.c))
+OBJECTS   = $(patsubst %.c,%.o,$(SOURCES))
+
+TARGET    = coip
+
+
+all: $(TARGET)
+
+#a.o: Constants.h
+#b.o: Constants.h
+
+$(TARGET): $(OBJECTS)
+	$(CC) $^ $(LD_FLAGS) $(LD_LIBS) -o $@
+
+%.o: %.c
+	$(CC) $(CPPFLAGS) $(CFLAGS) -c $< 
+
+.PHONY: clean
+
+clean:
+	$(RM) $(TARGET) $(OBJECTS)	
