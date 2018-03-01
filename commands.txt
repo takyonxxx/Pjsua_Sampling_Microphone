@@ -1,0 +1,51 @@
+TCP:
+
+//tictan tica ses
+sudo tcpreplay-edit -i eno1 --enet-smac=80:c1:6e:e6:66:43 --enet-dmac=38:2c:4a:08:93:4b --srcipmap=10.1.10.60/32:10.1.10.52/32 --dstipmap=10.1.10.52/32:10.1.10.60/32 --portmap=14000:14001 file.pcap 
+
+
+tcpdump -i any -w paneltcpdump.pcap
+sudo tcpdump -i eno1 ud
+sudo tcpdump -XX -i lo port 14000
+sudo socat -d -d pty,link=/dev/ttyS4,raw,echo=0 pty,link=/dev/ttyS5,raw,echo=0
+ps ax | grep -i yke
+tcpdump -i bond0 -t -nn -XX
+
+
+
+AUDIO
+cat /proc/asound/cards
+aplay -t raw -f S16_LE -r 8000 -c1 record.wav 
+arecord -D hw:2 -f cd -c 2 -V stereo demo.wav
+aplay -D hw:2 -f cd -c 2 -V stereo demo.wav
+
+
+UNINSTALL PJSIP:
+
+# rm -f /usr/lib/libpj*.a /usr/lib/libmilenage*.a /usr/lib/pkgconfig/libpjproject.pc /usr/lib/libpj*.*
+Finally, you will need to update shared library links:
+# ldconfig
+If you want to run a sanity check, you can verify that pjproject has been uninstalled by ensuring no pjproject modules remain on the system:
+# ldconfig -p | grep pj
+
+
+GENERAL:
+grep -nr 'yourString*' .
+tar -xzvf file.tar.gz
+tar -zcvf archive-name.tar.gz directory-name
+sudo watch -n1 "ls -alh /proc/$(pgrep ykemp.bin)/fd | grep rx"
+watch -n 5 'lsof | grep ykemp.bin | wc -l'
+watch -n4 'sudo lsof -p <snmpdpid> | wc -l'
+
+sudo chown -R tbiliyor.tbiliyor HSTARelease/.*
+
+
+GIT:
+
+git init
+git remote add origin https://github.com/takyonxxx/BalanceRobotPi.git
+git config --global user.email "turkaybiliyor@hotmail.com"
+git config --global user.name "Türkay Biliyor"
+git add -A 
+git commit -am "XcVario"
+git push -u origin master
