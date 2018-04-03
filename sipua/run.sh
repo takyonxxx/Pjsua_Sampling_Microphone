@@ -1,5 +1,5 @@
 #!/bin/bash
-APPNAME="TIC_KRIPTO"
+APPNAME="Test"
 LOGDIR=.
 
 ulimit -c unlimited
