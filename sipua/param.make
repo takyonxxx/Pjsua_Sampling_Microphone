@@ -1,6 +1,6 @@
 # MAKE PARAMETERS FOR BINARY FILES
-NAME = yketiccrypto
-TARGET = yketiccrypto.bin
+NAME = test
+TARGET = test.bin
 # Use  _mgmtagent@dd8f15c28533 for specific version, otherwise current package is used.
 DEPS =
 
