@@ -1,4 +1,3 @@
-#export PKG_CONFIG_PATH=/home/bora/local/lib/pkgconfig
 
 CC = gcc
 CFLAGS = -Wall -g `pkg-config --cflags libpjproject`
